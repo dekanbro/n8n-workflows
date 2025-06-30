@@ -15,7 +15,7 @@ RUN apk update && \
 USER node
 
 # Install crypto and media processing packages
-RUN pnpm add fluent-ffmpeg wagmi viem @wagmi/core @viem/chains @viem/wallet
+RUN pnpm add @ffmpeg-installer/ffmpeg wagmi viem @wagmi/core @viem/chains
 
 # Done — the rest is inherited from the n8n image
 # Updated for Alpine Linux compatibility 
