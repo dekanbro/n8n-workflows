@@ -3,15 +3,13 @@ FROM n8nio/n8n:latest
 
 # Install ffmpeg and any needed system tools
 USER root
-RUN apt-get update && \
-    apt-get install -y \
+RUN apk update && \
+    apk add --no-cache \
         ffmpeg \
-        libavcodec-extra \
-        libav-tools \
+        ffmpeg-dev \
         imagemagick \
         && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/cache/apk/*
 
 # Switch back to node user
 USER node
@@ -19,4 +17,4 @@ USER node
 # Install crypto and media processing packages
 RUN pnpm add fluent-ffmpeg wagmi viem @wagmi/core @viem/chains @viem/wallet
 
-# Done — the rest is inherited from the n8n image
+# Done — the rest is inherited from the n8n image 
